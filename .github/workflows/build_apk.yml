@@ -21,7 +21,16 @@ jobs:
             android debug
 
       - name: Upload APK Artifact
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: NeonSnake-Android-APK
           path: bin/*.apk
+
+      - name: Upload Buildozer Logs on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: buildozer-debug-logs
+          path: |
+            .buildozer/**/*.log
