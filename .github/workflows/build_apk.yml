@@ -13,21 +13,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Cache Buildozer global directory
-        uses: actions/cache@v4
-        with:
-          path: .buildozer_global
-          key: buildozer-global-${{ hashFiles('buildozer.spec') }}
-
-      - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
-        with:
-          command: buildozer android debug
-          buildozer_version: master
+      - name: Build APK with Buildozer
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/home/user/hostcwd \
+            ghcr.io/kivy/buildozer:latest \
+            android debug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: NeonSnake-Android-APK
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
