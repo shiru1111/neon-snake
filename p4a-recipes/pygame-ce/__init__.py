@@ -14,7 +14,7 @@ class PygameCeRecipe(CompiledComponentsPythonRecipe):
     site_packages_name = 'pygame'
     name = 'pygame-ce'
 
-    depends = ['sdl2', 'sdl2_image', 'sdl2_mixer', 'sdl2_ttf', 'setuptools']
+    depends = ['python3', 'sdl2', 'sdl2_image', 'sdl2_mixer', 'sdl2_ttf', 'setuptools']
     call_hostpython_via_targetpython = False
     install_in_hostpython = False
 

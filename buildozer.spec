@@ -23,7 +23,7 @@ version = 1.0.0
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,pygame-ce
+requirements = python3,pygame-ce,sdl2,sdl2_image,sdl2_ttf,sdl2_mixer
 
 # (str) Bootstrap to use for android builds
 p4a.bootstrap = sdl2
